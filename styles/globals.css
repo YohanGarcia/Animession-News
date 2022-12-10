@@ -1,16 +1,45 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 * {
+  margin: 0;
   box-sizing: border-box;
+}
+:root {
+  --soft-orange: hsl(35, 77%, 62%);
+  --soft-red: hsl(5,85%, 63%);
+  --fff-white: hsl(36,100%, 99%);
+  --grayish-blue: hsl(223, 13%, 79%);
+  --dark-grayish-blue: hsl(236, 13%, 42%);
+  --very-dark-blue: hsl(240, 100%, 5%);
+
+  --rad: .7rem;
+  --dur: .3s;
+  --color-dark: #2f2f2f;
+  --color-light: #fff;
+  --color-brand: #57bd84;
+  --font-fam: 'Lato', sans-serif;
+  --height: 5rem;
+  --btn-width: 6rem;
+  --bez: cubic-bezier(0, 0, 0.43, 1.49);
+}
+body {
+  font-family: 'Inter', sans-serif;
+}
+.wrapper{
+  width: 100%;
+  margin: 0 auto;
+  max-width: 1200px;
+  overflow: hidden;
+  /* background-color: #8a8888; */
+}    
+.reg{
+  color: white;
+  background-color: var(--soft-red);
+}
+.log {
+color: var(--dark-grayish-blue);
+background-color: rgba(255, 255, 255, 1);
+border: 1px solid rgba(104, 85, 224, 1);
 }
