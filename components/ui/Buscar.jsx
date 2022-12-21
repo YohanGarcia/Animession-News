@@ -13,7 +13,7 @@ const Form = styled.form`
 
   background-color: white;
   /* Change width of the form depending if the bar is opened or not */
-  width: ${props => (props.barOpened ? "90%" : "2rem")};
+  width:  70%;
   /* If bar opened, normal cursor on the whole form. If closed, show pointer on the whole form so user knows he can click to open it */
   cursor: ${props => (props.barOpened ? "auto" : "pointer")};
   padding: 1.1rem;

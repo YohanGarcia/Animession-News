@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import Router from "next/router";
+import FileUploader from "react-firebase-file-uploader";
 
 import Layout from "../components/layout/Layout";
 import firebase from "../firebase";
@@ -14,18 +15,26 @@ const STATE_INICIAL = {
   nombre: '',
   email: '',
   password: '',
-  rol: ''
+  avatar: '',
+  admin: false
 }
 export default function CrearCuenta() {
 
   const [error, guardarErrore] = useState('');
 
   const { valores, errores, handleSubmit, handleChange, handleBlur } = useValidacion(STATE_INICIAL, validarCrearCuenta, crearCuenta);
+
   const { nombre, email, password } = valores;
+
+  // state de las imagenes
+  const [nombreImagen, guardarNombre] = useState('');
+  const [subiendo, guardarSubiendo] = useState(false);
+  const [pregreso, guardarPregreso] = useState(0);
+  const [avatar, guardarUrlImagen] = useState('');
 
   async function crearCuenta() {
     try {
-      await firebase.registrar(nombre, email, password);
+      await firebase.registrar(nombre, email, password, avatar);
       Router.push('/')
     } catch (error) {
       if (error.code === 'auth/email-already-in-use') {
@@ -33,6 +42,29 @@ export default function CrearCuenta() {
       }
     }
   }
+  const handleUploadStart = () => {
+    guardarPregreso(0);
+    guardarSubiendo(true);
+  }
+  const handleProgress = progreso => guardarPregreso({ progreso });
+
+  const handleUploadError = error => {
+    guardarSubiendo(error);
+    console.error(error);
+  }
+  const handleUploadSuccess = nombre => {
+    guardarPregreso(0);
+    guardarSubiendo(false);
+    guardarNombre(nombre)
+    firebase
+      .storage
+      .ref(`usersAvatar/${avatar}`)
+      .child(nombre)
+      .getDownloadURL()
+      .then(url => {
+          guardarUrlImagen(url)
+      });
+  };
 
   return (
     <div>
@@ -47,6 +79,26 @@ export default function CrearCuenta() {
                       <h2 className="text-uppercase text-center mb-5">Crear Cuenta</h2>
                       {error && <p className="text-danger">{error}</p>}
                       <form onSubmit={handleSubmit} noValidate>
+
+                        <div className="">
+
+                          <div className="">
+                            <label htmlFor="formFileSm" className="f">Imagen</label>
+                            <FileUploader
+                              accept="image/*"
+                              randomizeFilename
+                              storageRef={firebase.storage.ref("usersAvatar")}
+                              onUploadStart={handleUploadStart}
+                              onUploadError={handleUploadError}
+                              onUploadSuccess={handleUploadSuccess}
+                              onProgress={handleProgress}
+                              className=""
+                              id="formFileSm"
+                              name="avatar"
+                            />
+                          </div>
+                          {errores.imagen1 && <p className="r">{errores.imagen1}</p>}
+                        </div>
 
                         <div className="form-outline mb-4">
                           <label className="form-label" htmlFor="form3Example1cg">Nombre</label>

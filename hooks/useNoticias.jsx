@@ -1,8 +1,8 @@
-import React,{useContext,useEffect,useState} from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { FirebaseContext } from '../firebase';
 
 const UseNoticias = orden => {
-    const [noticias, guardarNoticias] = useState([]);
+  const [noticias, guardarNoticias] = useState([]);
 
   const { firebase } = useContext(FirebaseContext);
 

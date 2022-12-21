@@ -15,10 +15,11 @@ class Firebase {
         this.storage = app.storage();
     }
     // Registrar un usuario
-    async registrar(nombre,email,password) {
+    async registrar(nombre,email,password, avatar) {
         const nuevoUsuario = await this.auth.createUserWithEmailAndPassword(email,password);
         return await nuevoUsuario.user.updateProfile({
             displayName: nombre,
+            photoURL: avatar
         });
 
     }

@@ -1,0 +1,55 @@
+[debug] [2022-12-21T03:55:01.095Z] ----------------------------------------------------------------------
+[debug] [2022-12-21T03:55:01.101Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Blacknet\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2022-12-21T03:55:01.103Z] CLI Version:   11.19.0
+[debug] [2022-12-21T03:55:01.103Z] Platform:      win32
+[debug] [2022-12-21T03:55:01.104Z] Node Version:  v16.15.0
+[debug] [2022-12-21T03:55:01.107Z] Time:          Tue Dec 20 2022 23:55:01 GMT-0400 (hora de Bolivia)
+[debug] [2022-12-21T03:55:01.107Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-12-21T03:55:01.680Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-12-21T03:55:01.681Z] > authorizing via signed-in user (yohangarcia056@gmail.com)
+[debug] [2022-12-21T03:55:01.682Z] [iam] checking project animed-news for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2022-12-21T03:55:01.690Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/animed-news:testIamPermissions [none]
+[debug] [2022-12-21T03:55:01.691Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/animed-news:testIamPermissions x-goog-quota-user=projects/animed-news
+[debug] [2022-12-21T03:55:01.691Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/animed-news:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2022-12-21T03:55:02.213Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/animed-news:testIamPermissions 200
+[debug] [2022-12-21T03:55:02.213Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/animed-news:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2022-12-21T03:55:02.216Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/animed-news [none]
+[debug] [2022-12-21T03:55:02.735Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/animed-news 200
+[debug] [2022-12-21T03:55:02.736Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/animed-news {"projectId":"animed-news","projectNumber":"760305814419","displayName":"Animed News","name":"projects/animed-news","resources":{"hostingSite":"animed-news","storageBucket":"animed-news.appspot.com","locationId":"us-central"},"state":"ACTIVE","etag":"1_fac8d849-80f9-4863-b3cf-9bc5befeba01"}
+[debug] [2022-12-21T03:55:16.484Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/animed-news/sites pageToken=&pageSize=10
+[debug] [2022-12-21T03:55:17.005Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/animed-news/sites 200
+[debug] [2022-12-21T03:55:17.005Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/animed-news/sites {"sites":[{"name":"projects/animed-news/sites/animed-news","defaultUrl":"https://animed-news.web.app","type":"DEFAULT_SITE"}]}
+[debug] [2022-12-21T03:55:17.007Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/animed-news/sites 
+[debug] [2022-12-21T03:55:17.568Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/animed-news/sites 200
+[debug] [2022-12-21T03:55:17.568Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/animed-news/sites {"sites":[{"name":"projects/animed-news/sites/animed-news","defaultUrl":"https://animed-news.web.app","type":"DEFAULT_SITE"}]}
+[debug] [2022-12-21T03:55:17.569Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/animed-news/webApps/-/config [none]
+[debug] [2022-12-21T03:55:18.072Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/animed-news/webApps/-/config 200
+[debug] [2022-12-21T03:55:18.073Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/animed-news/webApps/-/config {"projectId":"animed-news","appId":"1:760305814419:web:a3d6b388e68cfa0cfb7666","storageBucket":"animed-news.appspot.com","locationId":"us-central","apiKey":"AIzaSyCV1SLnC643MlF6FffFlTZBK5RCPL9MIis","authDomain":"animed-news.firebaseapp.com","messagingSenderId":"760305814419"}
+[debug] [2022-12-21T03:56:24.664Z] Error: Export encountered errors on following paths:
+	/
+	/_error: /404
+	/_error: /500
+	/admin
+	/admin/categoria
+	/admin/crear-news/nueva-noticia
+	/buscar
+	/categoria/[nombre]
+	/crear-cuenta
+	/login
+	/noticia/[id]
+	/populares
+    at C:\Users\Blacknet\Desktop\animed-news-next-v9\node_modules\next\dist\export\index.js:408:19
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async Span.traceAsyncFn (C:\Users\Blacknet\Desktop\animed-news-next-v9\node_modules\next\dist\trace\trace.js:79:20)
+    at async C:\Users\Blacknet\Desktop\animed-news-next-v9\node_modules\next\dist\build\index.js:1334:21
+    at async Span.traceAsyncFn (C:\Users\Blacknet\Desktop\animed-news-next-v9\node_modules\next\dist\trace\trace.js:79:20)
+    at async C:\Users\Blacknet\Desktop\animed-news-next-v9\node_modules\next\dist\build\index.js:1194:17
+    at async Span.traceAsyncFn (C:\Users\Blacknet\Desktop\animed-news-next-v9\node_modules\next\dist\trace\trace.js:79:20)
+    at async build (C:\Users\Blacknet\Desktop\animed-news-next-v9\node_modules\next\dist\build\index.js:65:29)
+    at async build (C:\Users\Blacknet\AppData\Roaming\npm\node_modules\firebase-tools\lib\frameworks\next\index.js:50:5)
+    at async prepareFrameworks (C:\Users\Blacknet\AppData\Roaming\npm\node_modules\firebase-tools\lib\frameworks\index.js:246:93)
+    at async deploy (C:\Users\Blacknet\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\index.js:53:13)
+[error] 
+[error] Error: An unexpected error has occurred.

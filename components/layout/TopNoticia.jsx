@@ -1,68 +1,60 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Link from 'next/link';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faRss } from '@fortawesome/free-solid-svg-icons'
 import UseNoticias from '../../hooks/useNoticias';
-import {
-    Hero,
-    ImgTop,
-    TextTop,
-    TitleTop,
-    PostsTop,
-    Aside,
-    AsideH2,
-    Botton,
-    BlogTop
-} from '../ui';
-import News from './News';
-import Image from 'next/image';
+
 import ListsNews from './ListsNews';
+import Widgets from './Widgets';
 
 const TopNoticia = () => {
 
-    const { noticias } = UseNoticias('votos')
-    const [voto, setVoto] = useState({})
-    useEffect(() => {
-        if (noticias.length > 0) {
-            setVoto(noticias[0])
-        }
-    }, [noticias])
+    const { noticias } = UseNoticias('creado')
+    // const [voto, setVoto] = useState({})
+    // useEffect(() => {
+    //     if (noticias.length > 0) {
+    //         setVoto(noticias[0])
+    //     }
+    // }, [noticias])
 
     return (
         <>
-            <Hero>
-                <BlogTop>
-                    <h4 className="pull-left">Recent News <a href="#"><i className="fa fa-rss"></i></a></h4>
-                </BlogTop>
-                {noticias.slice(0, 3).map((noticia, index) => (
-                    <ListsNews key={index} noticia={noticia} />
-                ))}
 
+            <div className='col-lg-8 col-md-12 col-sm-12 col-xs-12'>
+                <div className='page-wrapper'>
+                    <div className='blog-top clearfix'>
+                        <h4 className="pull-left">
+                            Recent News
+                            <FontAwesomeIcon icon={faRss} style={{ color: "#FF6347", fontSize: 20, marginLeft: 10 }} />
 
-
-
-
-
-
-
-
-
-
-                {/* <ImgTop background={voto.urlimagen} className='hero__img'></ImgTop>
-                <TextTop>
-                    <TitleTop>{voto.titulo?.slice(0, 100)}...</TitleTop>
-                    <div className="hero__copy">
-                        <PostsTop>
-                            {voto.posts1?.slice(0, 200)}...
-                        </PostsTop>
-                        <Link href='#' className="hero__cta">Read more</Link>
+                        </h4>
                     </div>
-                </TextTop> */}
-            </Hero>
-            <Aside>
-                <AsideH2>News</AsideH2>
-                {noticias.slice(0, 3).map((noticia, index) => (
-                    <News key={index} noticia={noticia} />
-                ))}
-            </Aside>
+                    <div className="blog-list clearfix">
+                        {noticias.slice(0, 3).map((noticia, index) => (
+                            <ListsNews key={index} noticia={noticia} />
+                        ))}
+                    </div>
+                </div>
+                <hr className="invis" />
+                <div className="row">
+                    <div className="col-md-12">
+                        <nav aria-label="Page navigation example">
+                            <ul className="pagination justify-content-center">
+                                <li className="page-item"><Link className="page-link " href="#">1</Link></li>
+                                <li className="page-item"><Link className="page-link" href="#">2</Link></li>
+                                <li className="page-item"><Link className="page-link" href="#">3</Link></li>
+                                <li className="page-item">
+                                    <Link className="page-link" href="#">Next</Link>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+            <Widgets noticia={noticias}/>
+           
+
         </>
     );
 }

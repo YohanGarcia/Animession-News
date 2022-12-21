@@ -1,14 +1,14 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import Head from 'next/head';
+import { Toaster } from 'react-hot-toast'
 import Header from './Header';
-import { Main } from '../ui/Main';
-import Document from 'next/document';
+import Footer from './Footer';
 
 
 
 const Layout = ({ children, title }) => {
 
-    
+
     return (
         <>
             <Head>
@@ -20,12 +20,21 @@ const Layout = ({ children, title }) => {
 
 
             </Head>
+            <div id='wrapper'>
 
-            <Header />
+                <Header />
 
-            <Main  className='wrapper'>
-                {children}
-            </Main>
+                <section className='section'>
+                    <div className="container px-4">
+                        <div className="row gx-5">
+                            {children}
+                        </div>
+                    </div>
+                </section>
+                <Footer />
+                <Toaster />
+            </div>
+
         </>
     );
 }

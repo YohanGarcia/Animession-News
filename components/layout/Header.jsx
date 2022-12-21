@@ -1,20 +1,30 @@
 import React, { useContext, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import CircumIcon from "@klarr-agency/circum-icons-react"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCircleArrowDown } from '@fortawesome/free-solid-svg-icons'
 
 import { FirebaseContext } from '../../firebase';
 import Buscar from '../ui/Buscar';
 import { HeaderComponent, Nav, BgDiv, Logout, Botton } from '../ui';
 import BurgueButton from './BurgueButton';
+import Dropdown from '../ui/Dropdown';
 
 
 
 const Header = () => {
     const { usuario, firebase } = useContext(FirebaseContext)
 
-
     const [clicked, setClicked] = useState(false)
+
+
+    const handleMenuOne = () => {
+        firebase.cerrarSession()
+    };
+
+    const handleMenuTwo = () => {
+        console.log('clicked two');
+    };
 
     const handleClick = () => {
         setClicked(!clicked)
@@ -22,7 +32,6 @@ const Header = () => {
     const handleLink = () => {
         setClicked(false)
     }
-
 
     return (
         <HeaderComponent className='wrapper'>
@@ -32,66 +41,69 @@ const Header = () => {
                         <Image
                             src='/logo.png'
                             alt='animession news'
-                            width={200}
-                            height={80}
+                            width='200'
+                            height='80'
                             layout='responsive'
                             priority={false}
                             className='nav__logo'
                         />
                     </Link>
                 </div>
-                <Buscar />
 
                 <div className={`nav__links ${clicked ? 'active' : ' '}`}>
                     <Link onClick={handleLink} href='/' className='nav__link'>Inicio</Link>
                     <Link onClick={handleLink} href='/populares' className='nav__link'>Populares</Link>
-                    {usuario?.uid === "pitLCi5WOegqkzxoHY3olbSxkOE3" && (
-                        <>
-                            <Link onClick={handleLink} href='/nueva-noticia' className=''>Nueva Noticia</Link>
-                        </>
+
+                    {usuario?.uid === "Vm2RAm2MUjMCeNA7Zb47883GkOM2" && (
+
+                        <Link onClick={handleLink} href='/admin' className=''>Admin</Link>
                     )}
+                    {usuario?.uid === "YqzdUuBuFBflRsR1C6uVYTXvsu53" && (
+
+                        <Link onClick={handleLink} href='/admin' className=''>Admin</Link>
+                    )}
+                    <Buscar />
+
                     {usuario ? (
                         <>
                             <div className='user'>
                                 <img
-                                    src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973461_960_720.png"
+                                    src={usuario.photoURL}
                                     alt=""
-                                    className='user__avatar'
+                                    className='user__avatar '
                                 />
 
-                                <p className=''>Hola: {usuario?.displayName} </p>
                             </div>
+                            <Dropdown
+                                trigger={<p className='username'>
+                                    {usuario?.displayName} {' '}
+                                    <FontAwesomeIcon icon={faCircleArrowDown} /> </p>}
+                                menu={[
+                                    // <Botton onClick={handleMenuTwo}>Menu 2</Botton>,
+                                    <Botton onClick={handleMenuOne}>Close</Botton>,
+                                ]}
+                            />
+
+
+
                         </>
                     ) : (
-                        <></>
+                        <div className='admin'>
+                            <Link href='/login' className=''>
+                                <Botton className='log'>
+                                    Login
+                                </Botton>
+                            </Link>
+
+                            <Link href='/crear-cuenta' className=''>
+
+                                <Botton className='reg'>
+                                    sing up
+                                </Botton>
+                            </Link>
+                        </div>
                     )}
 
-                    <div className='admin'>
-                        {usuario ? (
-                            <>
-                                <Botton
-                                    onClick={() => firebase.cerrarSession()}
-                                >
-                                    Cloce
-                                </Botton>
-                            </>
-                        ) : (
-                            <>
-                                <Link href='/login' className=''>
-                                    <Botton className='log'>
-                                        Login
-                                    </Botton>
-                                </Link>
-
-                                <Link href='/crear-cuenta' className=''>
-
-                                    <Botton className='reg'>
-                                        sing up
-                                    </Botton>
-                                </Link>
-                            </>
-                        )}
-                    </div>
                 </div>
 
                 <div className='burguer'>

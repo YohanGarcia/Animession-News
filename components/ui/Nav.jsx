@@ -3,14 +3,15 @@ import styled from 'styled-components';
 
 export const Nav = styled.nav`
     display: grid;
-    grid-template-columns: repeat(3, max-content);
+    grid-template-columns: repeat(2, max-content);
     align-items: center;
     justify-content: space-between;
     height: 80px;
     background-color: #5694b167;
+    padding: 10px;
     &{
       @media (min-width: 768px) {
-        grid-template-columns: repeat(3, max-content);
+        grid-template-columns: repeat(2, max-content);
         align-items: center;
         height: 80px;
       
@@ -85,7 +86,6 @@ export const Nav = styled.nav`
   height: 80px;
   display: flex;
   align-items: center;
-
 }
 .nav__logo {
   width: 100%;
@@ -94,16 +94,17 @@ export const Nav = styled.nav`
   filter: drop-shadow(0 0 5px blue);
 }
 .user__avatar {
-  width: 30px;
-  height: 30px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
-  margin-right: 10px;
-}
-.user {
-  display: flex;
-  align-items: center;
+
+  cursor: pointer;
+  filter: drop-shadow(0 0 5px blue);
 }
 
+.user {
+
+}
 .admin{
   display: flex;
   align-items: block;
