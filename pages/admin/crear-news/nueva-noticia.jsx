@@ -4,7 +4,6 @@ import Router, { useRouter } from "next/router";
 import Select from "react-select";
 import toast from 'react-hot-toast'
 
-import FileUploader from "react-firebase-file-uploader";
 
 import Layout from "../../../components/layout/Layout";
 import { FirebaseContext } from "../../../firebase";
@@ -322,7 +321,7 @@ const NuevaNoticia = () => {
                                     onBlur={handleBlur}
                                 />
                             </div>
-                            <div className="col-6 pt-2">
+                            {/* <div className="col-6 pt-2">
 
                                 <label htmlFor="formFileSm" className="f">Imagen</label>
                                 <FileUploader
@@ -340,7 +339,7 @@ const NuevaNoticia = () => {
                                     aria-label="Upload"
                                 />
                                 {errores.imagen1 && <p className="r">{errores.imagen1}</p>}
-                            </div>
+                            </div> */}
                             <div className="col-6 pt-2">
                                 <label for="basic-url" className="form-label">URL del trailer</label>
                                 <div className="input-group mb-3">
