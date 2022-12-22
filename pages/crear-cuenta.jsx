@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import Router from "next/router";
-import FileUploader from "react-firebase-file-uploader";
+// import FileUploader from "react-firebase-file-uploader";
 
 import Layout from "../components/layout/Layout";
 import firebase from "../firebase";
@@ -81,7 +81,7 @@ export default function CrearCuenta() {
                       <form onSubmit={handleSubmit} noValidate>
 
                         <div className="">
-
+{/* 
                           <div className="">
                             <label htmlFor="formFileSm" className="f">Imagen</label>
                             <FileUploader
@@ -96,7 +96,7 @@ export default function CrearCuenta() {
                               id="formFileSm"
                               name="avatar"
                             />
-                          </div>
+                          </div> */}
                           {errores.imagen1 && <p className="r">{errores.imagen1}</p>}
                         </div>
 

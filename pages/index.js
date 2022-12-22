@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React,{useState } from "react";
 import Layout from "../components/layout/Layout";
 import DetallesNoticia from "../components/layout/DetallesNoticia";
 import UseNoticias from "../hooks/useNoticias";
