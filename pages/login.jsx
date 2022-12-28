@@ -3,7 +3,7 @@ import { useState, useContext } from "react";
 import Router from "next/router";
 
 import Layout from "../components/layout/Layout";
-import firebase, { FirebaseContext } from "../firebase";
+import myFirebase, { FirebaseContext } from "../firebase";
 
 // validaciones
 import useValidacion from "../hooks/useValidacion";
@@ -32,7 +32,7 @@ const Login = () => {
 
     async function IniciarSession() {
         try {
-            await firebase.login(email, password);
+            await myFirebase.login(email, password);
             Router.push('/');
         } catch (error) {
             console.error('Hubo un error al autenticarse el usuario', error.code);

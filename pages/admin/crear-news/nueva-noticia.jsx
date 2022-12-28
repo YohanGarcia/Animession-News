@@ -36,7 +36,7 @@ const NuevaNoticia = () => {
     const [error, guardarErrore] = useState('');
 
     const { valores, errores, handleSubmit, handleChange, handleBlur } = useValidacion(STATE_INICIAL, validarCrearNoticia, crearNoticia);
-    const { titulo, posts1,posts2,posts3, trailers, sinopsis } = valores;
+    const { titulo, posts1, posts2 = '', posts3 = '', trailers, sinopsis } = valores;
 
     // hook de routing para redirecionar
     const router = useRouter();
@@ -185,7 +185,7 @@ const NuevaNoticia = () => {
                                 {errores.titulo && <p className="">{errores.titulo}</p>}
                             </div>
                             <div className="col-6 pt-2">
-                                <label className="" htmlFor="exampleFormControlTextarea1">contenido</label>
+                                <label className="" htmlFor="exampleFormControlTextarea1">contenido 1</label>
                                 <textarea
                                     type="text"
                                     name="posts1"
@@ -199,24 +199,50 @@ const NuevaNoticia = () => {
                                 {errores.posts1 && <p className="">{errores.posts1}</p>}
                             </div>
                             <div className="col-6 pt-2">
-
-                                <label htmlFor="formFileSm" className="f">Imagen</label>
-                                <FileUploader
-                                    accept="image/*"
-                                    randomizeFilename
-                                    storageRef={firebase.storage.ref("noticias")}
-                                    onUploadStart={handleUploadStart}
-                                    onUploadError={handleUploadError}
-                                    onUploadSuccess={handleUploadSuccess}
-                                    onProgress={handleProgress}
+                                <label className="" htmlFor="exampleFormControlTextarea1">contenido 2</label>
+                                <textarea
+                                    type="text"
+                                    name="posts2"
+                                    id="fexampleFormControlTextarea1"
                                     className="form-control"
-                                    id="formFileSm"
-                                    name="imagen1"
-                                    aria-describedby="inputGroupFileAddon04"
-                                    aria-label="Upload"
+                                    aria-label="With textarea"
+                                    value={posts2}
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
                                 />
-                                {errores.imagen1 && <p className="r">{errores.imagen1}</p>}
                             </div>
+                            <div className="col-6 pt-2">
+                                <label className="" htmlFor="exampleFormControlTextarea1">contenido 3</label>
+                                <textarea
+                                    type="text"
+                                    name="posts3"
+                                    id="fexampleFormControlTextarea1"
+                                    className="form-control"
+                                    aria-label="With textarea"
+                                    value={posts3}
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                />
+                            </div>
+                            {/* <div className="col-6 pt-2">
+
+            <label htmlFor="formFileSm" className="f">Imagen</label>
+            <FileUploader
+                accept="image/*"
+                randomizeFilename
+                storageRef={firebase.storage.ref("noticias")}
+                onUploadStart={handleUploadStart}
+                onUploadError={handleUploadError}
+                onUploadSuccess={handleUploadSuccess}
+                onProgress={handleProgress}
+                className="form-control"
+                id="formFileSm"
+                name="imagen1"
+                aria-describedby="inputGroupFileAddon04"
+                aria-label="Upload"
+            />
+            {errores.imagen1 && <p className="r">{errores.imagen1}</p>}
+        </div> */}
                             <div className="col-6 pt-2">
                                 <label for="basic-url" className="form-label">URL del trailer</label>
                                 <div className="input-group mb-3">
@@ -234,7 +260,7 @@ const NuevaNoticia = () => {
                             </div>
                             <div className="col-6 pt-2">
                                 <label className="" htmlFor="form3Example1cg">Sinopsis</label>
-                                <input
+                                <textarea
                                     type="text"
                                     id="form3Example1cg"
                                     className="form-control"

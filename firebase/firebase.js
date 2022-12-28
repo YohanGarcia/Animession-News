@@ -1,4 +1,4 @@
-import app from 'firebase/compat/app';
+import firebase from 'firebase/compat/app';
 import firebaseConfig from './config';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
@@ -7,12 +7,12 @@ import 'firebase/compat/storage';
 
 class Firebase {
     constructor() {
-        if(!app.apps.length){
-            app.initializeApp(firebaseConfig)
+        if(!firebase.apps.length){
+            firebase.initializeApp(firebaseConfig)
         }
-        this.auth = app.auth();
-        this.db = app.firestore();
-        this.storage = app.storage();
+        this.auth = firebase.auth();
+        this.db = firebase.firestore();
+        this.storage = firebase.storage();
     }
     // Registrar un usuario
     async registrar(nombre,email,password, avatar) {
@@ -34,6 +34,6 @@ class Firebase {
     }
 }
 
-const firebase = new Firebase();
+const myFirebase = new Firebase();
 
-export default firebase;
+export default myFirebase;

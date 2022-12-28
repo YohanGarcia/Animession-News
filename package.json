@@ -21,7 +21,9 @@
     "react-hot-toast": "^2.4.0",
     "react-player": "^2.11.0",
     "react-select": "^5.7.0",
+    "rewrite": "^0.0.1",
     "styled-components": "^5.3.6",
+    "to": "^0.2.9",
     "uuid": "^9.0.0"
   },
   "devDependencies": {

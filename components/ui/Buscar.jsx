@@ -81,24 +81,6 @@ const Buscar = () => {
 
     return (
         <>
-            {/* <Form 
-                onSubmit={bucarNoticia}
-                role="search"
-            >
-                <label for="search">Search for stuff</label>
-                <input
-                    id="search" 
-                    type="search" 
-                    placeholder="Search..." 
-                    autofocus 
-                    required
-                    onChange={e => guardarBusqueda(e.target.value)}
-                />
-                 <button type="submit">Go</button> 
-
-
-
-            </Form> */}
             <Form
                 barOpened={barOpened}
                 onClick={() => {

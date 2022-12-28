@@ -124,11 +124,11 @@ const Noticia = () => {
               <div className="page-wrapper">
                 <div className="blog-title-area text-center">
                   <span className="color-orange">
-                    <Link href="tech-category-01.html" title="">{categoria.nombre}</Link>
+                    <Link href="" title="">{categoria.nombre}</Link>
                   </span>
                   <h3>{titulo}</h3>
                   <div className="blog-meta big-meta">
-                    <small ><Link href="tech-single.html" title="" className="fs-6">Hace {formatDistance(creado, new Date())}</Link></small>
+                    <small ><Link href="" title="" className="fs-6">Hace {formatDistance(creado, new Date())}</Link></small>
                     <small className="fs-6"> <FontAwesomeIcon icon={faHeart} style={{ color: "red", fontSize: 20, paddingRight: 10 }} />
                       {" "} {votos}</small>
                   </div>
@@ -222,9 +222,9 @@ const Noticia = () => {
                       <div className="col-lg-5 blog-box">
                         <div className="blog-list-widget">
                           <div className="list-group">
-                            <Link href="tech-single.html" className="list-group-item list-group-item-action flex-column align-items-start">
+                            <Link href="" className="list-group-item list-group-item-action flex-column align-items-start">
                               <div className="w-100 justify-content-between text-right">
-                                <img src="upload/tech_menu_19.jpg" alt="" className="img-fluid float-right" />
+                                <img src="" alt="" className="img-fluid float-right" />
                                 <h5 className="mb-1">5 Beautiful buildings you need to before dying</h5>
                                 <small>Prev Post</small>
                               </div>
@@ -236,9 +236,9 @@ const Noticia = () => {
                       <div className="col-lg-5 blog-box">
                         <div className="blog-list-widget">
                           <div className="list-group">
-                            <Link href="tech-single.html" className="list-group-item list-group-item-action flex-column align-items-start">
+                            <Link href="" className="list-group-item list-group-item-action flex-column align-items-start">
                               <div className="w-100 justify-content-between">
-                                <img src="upload/tech_menu_20.jpg" alt="" className="img-fluid float-left" />
+                                <img src="" alt="" className="img-fluid float-left" />
                                 <h5 className="mb-1">Let's make an introduction to the glorious world of history</h5>
                                 <small>Next Post</small>
                               </div>
@@ -256,9 +256,9 @@ const Noticia = () => {
 
             <div className="custombox clearfix blog-box">
               <div className="row">
-                <div class="col-lg-12">
-                  <div class="comments-list">
-                    <div class="media">
+                <div className="col-lg-12">
+                  <div className="comments-list">
+                    <div className="media">
                       {/* disqus */}
                       <div id="disqus_thread"></div>
                       <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>

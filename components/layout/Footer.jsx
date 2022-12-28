@@ -41,7 +41,7 @@ const Footer = () => {
                     <div className="col-lg-7">
                         <div className="widget">
                             <div className="footer-text text-left">
-                                <Link href="index.html"><img src="images/version/tech-footer-logo.png" alt="" className="img-fluid" /></Link>
+                                <Link href="index.html"><img src="" alt="" className="img-fluid" /></Link>
                                 <p><span className='fs-5 text-danger'> Animesssion New </span>es un noticiero referente al anime, video juegos y entrevistas a mangakas en el cual nos proponemos a ofrecerles las ultimas noticias sobre este mundo.</p>
                                 {/* <div className="social">
                                     <Link href="#" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i className="fa fa-facebook"></i></Link>
