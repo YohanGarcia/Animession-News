@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCircleArrowDown } from '@fortawesome/free-solid-svg-icons'
+import { faRightToBracket, faCircleArrowDown, faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
 
 import { FirebaseContext } from '../../firebase';
 import Buscar from '../ui/Buscar';
@@ -88,19 +88,31 @@ const Header = () => {
 
                         </>
                     ) : (
-                        <div className='admin'>
-                            <Link href='/login' className=''>
-                                <Botton className='log'>
-                                    Login
-                                </Botton>
+                        <div className='admin '>
+                            <Link href='/login' className='ms-5 p-2 '>
+                                    <FontAwesomeIcon
+                                        icon={faRightToBracket}
+                                        style={{
+                                            color: "#FF6347",
+                                            fontSize: 25,
+                                            
+                                        }}
+
+                                    />
                             </Link>
 
-                            <Link href='/crear-cuenta' className=''>
+                            {/* <Link href='/crear-cuenta' className=''>
+                                <Botton>
+                                    <FontAwesomeIcon
+                                        icon={faRightFromBracket}
+                                        style={{
+                                            color: "A4A1A0",
+                                            fontSize: 25,
 
-                                <Botton className='reg'>
-                                    sing up
+                                        }}
+                                    />
                                 </Botton>
-                            </Link>
+                            </Link> */}
                         </div>
                     )}
 

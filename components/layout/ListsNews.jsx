@@ -3,7 +3,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { formatDistance } from 'date-fns';
 
-import { faEye, faHeart } from '@fortawesome/free-solid-svg-icons'
+import { faHeart } from '@fortawesome/free-solid-svg-icons'
 
 const ListsNews = ({ noticia }) => {
     const { id, posts1, titulo, urlimagen, votos, creado, categoria } = noticia

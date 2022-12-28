@@ -6,10 +6,12 @@ import Layout from "../../components/layout/Layout";
 import { es } from "date-fns/locale";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { formatDistance } from 'date-fns';
-import { faEye, faHeart } from '@fortawesome/free-solid-svg-icons'
+import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import Link from "next/link";
 import WidgetsNoticia from "../../components/layout/WidgetsNoticia";
 import ReactPlayer from 'react-player'
+import { Spiner } from "../../components/ui/spiner";
+import { GridLoader } from "react-spinners"
 
 const Noticia = () => {
   // state del componente
@@ -54,7 +56,7 @@ const Noticia = () => {
     obtenerNoticia();
   }, [id, votos]);
 
-  if (Object.keys(noticia).length === 0 && !error) return "Cargando noticia...";
+   if (Object.keys(noticia).length === 0 && !error) return <Spiner><GridLoader color="#FF6347" /></Spiner>;
 
   // Administrar y validar votos
   const votarNoticia = () => {
@@ -124,7 +126,7 @@ const Noticia = () => {
               <div className="page-wrapper">
                 <div className="blog-title-area text-center">
                   <span className="color-orange">
-                    <Link href="" title="">{categoria.nombre}</Link>
+                    <Link href="" title="">{categoria?.nombre}</Link>
                   </span>
                   <h3>{titulo}</h3>
                   <div className="blog-meta big-meta">

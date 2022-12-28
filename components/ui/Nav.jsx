@@ -132,12 +132,11 @@ export const Logout = styled.button`
 export const Botton = styled.button`
   cursor: pointer;
   border: 0;
-  border-radius: 8px;
-  font-weight: 600;
+  border-radius: 40%;
   margin: 0 6px;
-  width: 110px;
-  padding: 3px 0;
-  box-shadow: 10px 10px 10px rgba(35, 35, 36, 0.781);
+  width: 50px;
+  height: 50px;
+  box-shadow: 5px 5px 8px rgba(35, 35, 36, 0.781);
 
   transition: 0.4s;
   &:hover {
