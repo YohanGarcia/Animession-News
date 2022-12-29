@@ -12,7 +12,9 @@ import { FirebaseContext } from "../../../firebase";
 import useValidacion from "../../../hooks/useValidacion";
 import validarCrearNoticia from "../../../validacion/validarCrearNoticia";
 import Error404 from "../../../components/layout/404";
-
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { v4 } from "uuid"
+import { async } from "@firebase/util";
 
 
 
@@ -27,9 +29,6 @@ const STATE_INICIAL = {
 const NuevaNoticia = () => {
 
     // state de las imagenes
-    const [nombreImagen, guardarNombre] = useState('');
-    const [subiendo, guardarSubiendo] = useState(false);
-    const [pregreso, guardarPregreso] = useState(0);
     const [urlimagen, guardarUrlImagen] = useState('');
     const [categoriaSelect, setCategoriaSelect] = useState({})
 
@@ -42,7 +41,7 @@ const NuevaNoticia = () => {
     const router = useRouter();
 
     // context con las operaciones crud de firebase
-    const { usuario, firebase } = useContext(FirebaseContext);
+    const { usuario, firebase, myFirebase } = useContext(FirebaseContext);
 
     const notify = () => toast.success("Noticia Creada!", {
         position: 'top-right',
@@ -89,31 +88,14 @@ const NuevaNoticia = () => {
         return router.push('/admin/crear-news/nueva-noticia')
     }
 
-    const handleUploadStart = () => {
-        guardarPregreso(0);
-        guardarSubiendo(true);
+    async function uploadFile(file) {
+        const storageRef = ref(firebase.storage, `noticias/${v4()}`)
+        await uploadBytes(storageRef, file).then(snapshot => {
+            console.log(snapshot);
+        })
+        const url = await getDownloadURL(storageRef)
+        guardarUrlImagen(url)
     }
-    const handleProgress = progreso => guardarPregreso({ progreso });
-
-    const handleUploadError = error => {
-        guardarSubiendo(error);
-        console.error(error);
-    }
-    const handleUploadSuccess = nombre => {
-        guardarPregreso(0);
-        guardarSubiendo(false);
-        guardarNombre(nombre)
-        firebase
-            .storage
-            .ref('noticias')
-            .child(nombre)
-            .getDownloadURL()
-            .then(url => {
-                console.log(url),
-                    guardarUrlImagen(url)
-            });
-    };
-
     //  categoria
 
     const [listaCategorias, setListaCategorias] = useState([])
@@ -157,6 +139,14 @@ const NuevaNoticia = () => {
             {usuario?.uid === 'Vm2RAm2MUjMCeNA7Zb47883GkOM2' && (
 
                 <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 blog-box p-3">
+                    <div className='user'>
+                        <img
+                            src={urlimagen}
+                            alt=""
+                            className='user__avatar img-thumbnail'
+                        />
+
+                    </div>
                     <h2 className="">Nueva Noticia</h2>
                     {error && <p className="">{error}</p>}
                     <form onSubmit={handleSubmit} noValidate>
@@ -224,25 +214,21 @@ const NuevaNoticia = () => {
                                     onBlur={handleBlur}
                                 />
                             </div>
-                            {/* <div className="col-6 pt-2">
+                            <div className="col-6 pt-2">
 
-            <label htmlFor="formFileSm" className="f">Imagen</label>
-            <FileUploader
-                accept="image/*"
-                randomizeFilename
-                storageRef={firebase.storage.ref("noticias")}
-                onUploadStart={handleUploadStart}
-                onUploadError={handleUploadError}
-                onUploadSuccess={handleUploadSuccess}
-                onProgress={handleProgress}
-                className="form-control"
-                id="formFileSm"
-                name="imagen1"
-                aria-describedby="inputGroupFileAddon04"
-                aria-label="Upload"
-            />
-            {errores.imagen1 && <p className="r">{errores.imagen1}</p>}
-        </div> */}
+                                <label htmlFor="formFileSm" className="f">Imagen</label>
+                                <input
+                                    className="form-control"
+                                    type="file"
+                                    id="formFileSm"
+                                    name="imagen1"
+                                    aria-describedby="inputGroupFileAddon04"
+                                    aria-label="Upload"
+                                    onChange={e => uploadFile(e.target.files[0])}
+                                />
+
+                                {errores.imagen1 && <p className="r">{errores.imagen1}</p>}
+                            </div>
                             <div className="col-6 pt-2">
                                 <label for="basic-url" className="form-label">URL del trailer</label>
                                 <div className="input-group mb-3">

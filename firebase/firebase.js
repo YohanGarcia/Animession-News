@@ -5,6 +5,7 @@ import 'firebase/compat/firestore';
 import 'firebase/compat/storage';
 
 
+
 class Firebase {
     constructor() {
         if(!firebase.apps.length){
@@ -35,5 +36,8 @@ class Firebase {
 }
 
 const myFirebase = new Firebase();
+
+
+
 
 export default myFirebase;
