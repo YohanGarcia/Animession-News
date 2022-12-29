@@ -2,7 +2,12 @@ import React, { useContext, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faRightToBracket, faCircleArrowDown, faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
+import {
+    faRightToBracket,
+    faCircleArrowDown,
+    faRightFromBracket,
+    faXmark
+} from '@fortawesome/free-solid-svg-icons'
 
 import { FirebaseContext } from '../../firebase';
 import Buscar from '../ui/Buscar';
@@ -74,15 +79,22 @@ const Header = () => {
                                 />
 
                             </div>
-                            <Dropdown
-                                trigger={<p className='username'>
-                                    {usuario?.displayName} {' '}
-                                    <FontAwesomeIcon icon={faCircleArrowDown} /> </p>}
-                                menu={[
-                                    // <Botton onClick={handleMenuTwo}>Menu 2</Botton>,
-                                    <Botton onClick={handleMenuOne}>Close</Botton>,
-                                ]}
-                            />
+
+                            <p className='username'>
+                                {usuario?.displayName} {' '}
+
+                            </p>
+                            <Link href="#!">
+                                <FontAwesomeIcon
+                                    icon={faXmark}
+                                    onClick={handleMenuOne}
+                                    style={{
+                                        color: "#FF6347",
+                                        fontSize: 30,
+                                    }}
+                                />
+                            </Link>
+
 
 
 
@@ -90,15 +102,15 @@ const Header = () => {
                     ) : (
                         <div className='admin '>
                             <Link href='/login' className='ms-5 p-2 '>
-                                    <FontAwesomeIcon
-                                        icon={faRightToBracket}
-                                        style={{
-                                            color: "#FF6347",
-                                            fontSize: 25,
-                                            
-                                        }}
+                                <FontAwesomeIcon
+                                    icon={faRightToBracket}
+                                    style={{
+                                        color: "#FF6347",
+                                        fontSize: 25,
 
-                                    />
+                                    }}
+
+                                />
                             </Link>
 
                             {/* <Link href='/crear-cuenta' className=''>
