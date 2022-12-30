@@ -333,25 +333,21 @@ const NuevaNoticia = () => {
                                     onBlur={handleBlur}
                                 />
                             </div>
-                            {/* <div className="col-6 pt-2">
+                            <div className="col-6 pt-2">
 
                                 <label htmlFor="formFileSm" className="f">Imagen</label>
-                                <FileUploader
-                                    accept="image/*"
-                                    randomizeFilename
-                                    storageRef={firebase.storage.ref("noticias")}
-                                    onUploadStart={handleUploadStart}
-                                    onUploadError={handleUploadError}
-                                    onUploadSuccess={handleUploadSuccess}
-                                    onProgress={handleProgress}
+                                <input
                                     className="form-control"
+                                    type="file"
                                     id="formFileSm"
                                     name="imagen1"
                                     aria-describedby="inputGroupFileAddon04"
                                     aria-label="Upload"
+                                    onChange={e => uploadFile(e.target.files[0])}
                                 />
+
                                 {errores.imagen1 && <p className="r">{errores.imagen1}</p>}
-                            </div> */}
+                            </div>
                             <div className="col-6 pt-2">
                                 <label for="basic-url" className="form-label">URL del trailer</label>
                                 <div className="input-group mb-3">
