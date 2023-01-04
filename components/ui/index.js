@@ -8,7 +8,6 @@ export * from './Aside'
 export * from './Aside'
 export * from './AnimedNewsUi'
 export * from './BuscarUi'
-export * from './VotarUi'
 export * from './VerNoticia'
 
 

@@ -8,7 +8,6 @@ import validarCrearCategoria from '../../../validacion/validarCrearCategoria';
 import UseCategoria from '../../../hooks/useCategoria';
 import Link from 'next/link';
 
-
 const STATE_INICIAL = {
     nombre: ''
 }
@@ -48,7 +47,7 @@ const Index = () => {
         firebase.db.collection('categoria').add(categoria);
         notify()
     }
-    
+
     // const { listaCategorias } = UseCategoria()
 
     const [listaCategorias, setListaCategorias] = useState([])
@@ -78,50 +77,50 @@ const Index = () => {
         });
         setListaCategorias(categorias)
     }
-    
+
     return (
         <Layout>
-            
-                    <div className='col blog-box p-3 h-25'>
-                        <h2>Nueva Categoria</h2>
-                        {error && <p className="text-danger">{error}</p>}
-                        <form onSubmit={handleSubmit} noValidate>
-                            <div className='mb-3 col-md-5 '>
-                                <label htmlFor="form3Example1cg" className='form-label'>Nombre de la categoria</label>
-                                <input
-                                    className='form-control'
-                                    type="text"
-                                    id="form3Example1cg"
-                                    name='nombre'
-                                    value={nombre}
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                    placeholder="Nombre de la categoria"
-                                />
-                                {errores.nombre && <p>{errores.nombre}</p>}
 
-                            </div>
-                            <button type="submit"
-                                className="btn btn-primary">Crear Noticia</button>
-                        </form>
+            <div className='col blog-box p-3 h-25'>
+                <h2>Nueva Categoria</h2>
+                {error && <p className="text-danger">{error}</p>}
+                <form onSubmit={handleSubmit} noValidate>
+                    <div className='mb-3 col-md-5 '>
+                        <label htmlFor="form3Example1cg" className='form-label'>Nombre de la categoria</label>
+                        <input
+                            className='form-control'
+                            type="text"
+                            id="form3Example1cg"
+                            name='nombre'
+                            value={nombre}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            placeholder="Nombre de la categoria"
+                        />
+                        {errores.nombre && <p>{errores.nombre}</p>}
+
                     </div>
-                    <div className="blog-box p-3 col-lg-3 col-md-12 col-sm-12 col-xs-12">
-                        <div className="widget">
-                            <h2 className="widget-title">Lista de Categorias</h2>
-                            <div className="link-widget">
-                                <ul>
-                                    {listaCategorias?.map((category, index) => (
-                                        <li key={index}>
-                                            <Link href="#" >{category.nombre}
-                                                <span>(21)</span>
-                                            </Link>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        </div>
+                    <button type="submit"
+                        className="btn btn-primary">Crear Noticia</button>
+                </form>
+            </div>
+            <div className="blog-box p-3 col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                <div className="widget">
+                    <h2 className="widget-title">Lista de Categorias</h2>
+                    <div className="link-widget">
+                        <ul>
+                            {listaCategorias?.map((category, index) => (
+                                <li key={index}>
+                                    <Link href="#" >{category.nombre}
+                                        <span>(21)</span>
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
                     </div>
-              
+                </div>
+            </div>
+
         </Layout>
     );
 }

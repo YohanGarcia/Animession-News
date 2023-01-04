@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import { Modal, Button } from 'react-bootstrap'
 import Link from 'next/link';
 import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -14,14 +15,18 @@ import Buscar from '../ui/Buscar';
 import { HeaderComponent, Nav, BgDiv, Logout, Botton } from '../ui';
 import BurgueButton from './BurgueButton';
 import Dropdown from '../ui/Dropdown';
+import ModalLogin from '../ModalLogin';
 
 
 
 const Header = () => {
+
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
     const { usuario, firebase } = useContext(FirebaseContext)
-
     const [clicked, setClicked] = useState(false)
-
 
     const handleMenuOne = () => {
         firebase.cerrarSession()
@@ -77,12 +82,10 @@ const Header = () => {
                                     alt=""
                                     className='user__avatar '
                                 />
-
                             </div>
 
                             <p className='username'>
                                 {usuario?.displayName} {' '}
-
                             </p>
                             <Link href="#!">
                                 <FontAwesomeIcon
@@ -94,14 +97,10 @@ const Header = () => {
                                     }}
                                 />
                             </Link>
-
-
-
-
                         </>
                     ) : (
                         <div className='admin '>
-                            <Link href='/login' className='ms-5 p-2 '>
+                            <Link href='#' className='ms-5 p-2 ' onClick={handleShow}>
                                 <FontAwesomeIcon
                                     icon={faRightToBracket}
                                     style={{
@@ -112,19 +111,6 @@ const Header = () => {
 
                                 />
                             </Link>
-
-                            {/* <Link href='/crear-cuenta' className=''>
-                                <Botton>
-                                    <FontAwesomeIcon
-                                        icon={faRightFromBracket}
-                                        style={{
-                                            color: "A4A1A0",
-                                            fontSize: 25,
-
-                                        }}
-                                    />
-                                </Botton>
-                            </Link> */}
                         </div>
                     )}
 
@@ -135,6 +121,7 @@ const Header = () => {
                 </div>
                 <BgDiv className={`initial ${clicked ? 'active' : ''}`}></BgDiv>
             </Nav>
+            <ModalLogin show={show} handleClose={handleClose}/>
         </HeaderComponent>
 
     );

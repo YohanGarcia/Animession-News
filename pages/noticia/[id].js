@@ -12,8 +12,13 @@ import WidgetsNoticia from "../../components/layout/WidgetsNoticia";
 import ReactPlayer from 'react-player'
 import { Spiner } from "../../components/ui/spiner";
 import { GridLoader } from "react-spinners"
+import ModalLogin from "../../components/ModalLogin";
 
+import toast from 'react-hot-toast'
 const Noticia = () => {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   // state del componente
   const [noticia, guardarNoticias] = useState({});
   const [error, setError] = useState(false);
@@ -41,6 +46,15 @@ const Noticia = () => {
     sinopsis
   } = noticia;
 
+  const notify = () => toast.success(`Te a gustado la noticia ${titulo}`, {
+    position: 'top-right',
+    duration: 3000,
+    // Change colors of success/error/loading icon
+    iconTheme: {
+      primary: '#fff',
+      secondary: '#000',
+    },
+  });
   useEffect(() => {
     const obtenerNoticia = async () => {
       const noticiaQuery = await firebase.db.collection("noticias").doc(id);
@@ -61,7 +75,7 @@ const Noticia = () => {
   // Administrar y validar votos
   const votarNoticia = () => {
     if (!usuario) {
-      return router.push("/login");
+      return handleShow()
     }
     const nuevoVotos = votos + 1;
 
@@ -76,7 +90,7 @@ const Noticia = () => {
       .collection("noticias")
       .doc(id)
       .update({ votos: nuevoVotos, havotado: nuevoHaVotado });
-
+    notify()
     // Actualizar el state
     guardarNoticias({
       ...noticia,
@@ -114,6 +128,9 @@ const Noticia = () => {
     s.setAttribute('data-timestamp', +new Date());
     (d.head || d.body).appendChild(s);
   })();
+
+
+
   return (
     <Layout>
       <>
@@ -152,33 +169,22 @@ const Noticia = () => {
                   <img src={urlimagen} alt="" className="img-fluid" />
                 </div>
                 <div className="blog-content pt-3">
-
                   <div className="pp">
                     <p>{posts1} </p>
                   </div>
-
-
                   {posts2 &&
                     <>
-
-
                       <div className="pp">
                         <p>{posts2} </p>
-
                       </div>
                     </>
-
                   }
                   {posts3 &&
                     <>
-
-
                       <div className="pp ">
                         <p>{posts3} </p>
-
                       </div>
                     </>
-
                   }
                   <hr className="invis" />
 
@@ -259,6 +265,7 @@ const Noticia = () => {
               </div>
             </div>
             <WidgetsNoticia />
+            <ModalLogin show={show} handleClose={handleClose} />
             <hr className="invis" />
 
             <div className="custombox clearfix blog-box">
