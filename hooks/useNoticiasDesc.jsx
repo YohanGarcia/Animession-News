@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { FirebaseContext } from '../firebase';
 
-const UseNoticias = orden => {
+const UseNoticiasDesc = () => {
   const [noticias, guardarNoticias] = useState([]);
 
   const { firebase } = useContext(FirebaseContext);
@@ -11,7 +11,6 @@ const UseNoticias = orden => {
     const obtenerNoticias = () => {
       firebase.db
         .collection("noticias")
-        .orderBy(orden, "desc")
         .onSnapshot(manejarSnapshot);
     };
     obtenerNoticias();
@@ -31,4 +30,4 @@ const UseNoticias = orden => {
   }
 }
 
-export default UseNoticias;
+export default UseNoticiasDesc;

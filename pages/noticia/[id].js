@@ -56,7 +56,7 @@ const Noticia = () => {
     obtenerNoticia();
   }, [id, votos]);
 
-   if (Object.keys(noticia).length === 0 && !error) return <Spiner><GridLoader color="#FF6347" /></Spiner>;
+  if (Object.keys(noticia).length === 0 && !error) return <Spiner><GridLoader color="#FF6347" /></Spiner>;
 
   // Administrar y validar votos
   const votarNoticia = () => {
@@ -156,11 +156,11 @@ const Noticia = () => {
                   <div className="pp">
                     <p>{posts1} </p>
                   </div>
-                  
+
 
                   {posts2 &&
                     <>
-                      
+
 
                       <div className="pp">
                         <p>{posts2} </p>
@@ -171,7 +171,7 @@ const Noticia = () => {
                   }
                   {posts3 &&
                     <>
-                     
+
 
                       <div className="pp ">
                         <p>{posts3} </p>
@@ -202,12 +202,17 @@ const Noticia = () => {
 
                   }
                   <hr className="invis" />
-                  <div className="pp">
-                    <h2>sinopsis</h2>
-                    <p>{sinopsis} </p>
+                  {sinopsis &&
+                    <>
+                      <div className="pp">
+                        <h2>sinopsis</h2>
+                        <p>{sinopsis} </p>
 
-                  </div>
-                  <hr className="invis" />
+                      </div>
+                      <hr className="invis" />
+                    </>
+                  }
+
                   {/* Banner */}
                   {/* <div className="row">
                     <div className="col-lg-12">

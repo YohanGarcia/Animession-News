@@ -41,7 +41,7 @@ const Widgets = () => {
                         </h2>
                         <div className="blog-list-widget">
                             <div className="list-group">
-                                {noticias?.map((noticia, i) => (
+                                {noticias?.slice(0,4).map((noticia, i) => (
                                     <Link key={i} href={"/noticia/[id]"} as={`${noticia.id}`} className="w-100 p-2 list-group-item list-group-item-action flex-column align-items-start blog-box">
                                         <div className="d-flex justify-content-between ">
                                             <img src={noticia.urlimagen} alt="" className="w-100 img-fluid rounded-start" />

@@ -23,8 +23,9 @@ const Layout = ({ children, title }) => {
             <div id='wrapper'>
 
                 <Header />
-
-                <section className='section'>
+          
+                <div className="pt-5"></div>
+                <section className='section '>
                     <div className="container px-4">
                         <div className="row gx-5">
                             {children}

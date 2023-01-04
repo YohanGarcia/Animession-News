@@ -8,6 +8,7 @@ import { Spiner } from "../components/ui/spiner";
 export default function Home() {
   const { noticias } = UseNoticias("creado");
   const [error, setError] = useState(false);
+  
   if (Object.keys(noticias).length === 0 && !error) return <Spiner><GridLoader color="#FF6347" /></Spiner>;
 
   return (

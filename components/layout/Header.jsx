@@ -39,7 +39,7 @@ const Header = () => {
     }
 
     return (
-        <HeaderComponent className='wrapper'>
+        <HeaderComponent className={`wrapper ${clicked ? '' : 'fixed-top'}`}>
             <Nav>
                 <div className='contenedor__logo'>
                     <Link href='/'>
@@ -57,7 +57,7 @@ const Header = () => {
 
                 <div className={`nav__links ${clicked ? 'active' : ' '}`}>
                     <Link onClick={handleLink} href='/' className='nav__link'>Inicio</Link>
-                    <Link onClick={handleLink} href='/populares' className='nav__link'>Populares</Link>
+                    <Link onClick={handleLink} href='/noticias' className='nav__link'>News</Link>
 
                     {usuario?.uid === "Vm2RAm2MUjMCeNA7Zb47883GkOM2" && (
 

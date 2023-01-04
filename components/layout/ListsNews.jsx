@@ -19,7 +19,7 @@ const ListsNews = ({ noticia }) => {
             </div>
 
             <div className="blog-meta big-meta col-md-8">
-                <h4><Link href="/noticia/[id]" as={`noticia/${id}`} title="">{titulo}</Link></h4>
+                <h4><Link href="/noticia/[id]" as={`noticia/${id}`} title="">{titulo?.slice(0, 100)}...</Link></h4>
                 <p>{posts1?.slice(0, 200)}...</p>
                 <small className="fs-6"><Link className="bg-orange" href="/noticia/[id]" as={`noticia/${id}`} title="">{categoria.nombre}</Link></small>
                 <small className='fs-6'>Hace {formatDistance(creado, new Date())}</small>
@@ -28,7 +28,8 @@ const ListsNews = ({ noticia }) => {
                     {" "}{votos}
                 </small>
             </div>
-        </div><hr className='invis' /></>
+        </div>
+        <div className="pt-4"></div></>
 
     );
 }
