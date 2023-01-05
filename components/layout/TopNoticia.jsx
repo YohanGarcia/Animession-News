@@ -22,7 +22,7 @@ const TopNoticia = () => {
                     </div>
                     <div className="blog-list clearfix">
                         {noticias.slice(0, 8).map((noticia, index) => (
-                            <ListsNews key={index} noticia={noticia} />
+                           <ListsNews key={index} noticia={noticia} />
                         ))}
                     </div>
                 </div>

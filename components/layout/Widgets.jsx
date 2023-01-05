@@ -10,16 +10,8 @@ import UseNoticias from '../../hooks/useNoticias';
 import TrailersWidgets from './TrailersWidgets';
 
 const Widgets = () => {
-    const router = useRouter();
     const { noticias } = UseNoticias('votos')
-    const [LinkRuta, setLinkRuta] = useState('')
-
-    // if (router.route === '/noticia/[id]') (
-    //      setLinkRuta('/')
-    // );
-    // else if (router.route === '/') (
-    //   setLinkRuta('sa')  
-    // )
+   
     return (
         <>
             <div className="col-lg-4 col-md-12 col-sm-12 col-xs-12 ">

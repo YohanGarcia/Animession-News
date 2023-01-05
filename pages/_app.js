@@ -14,14 +14,17 @@ import "@fortawesome/fontawesome-svg-core/styles.css"; // import Font Awesome CS
 import { config } from "@fortawesome/fontawesome-svg-core";
 config.autoAddCss = false;
 
+const Noop = ({ children }) => <>{children}</>;
 
 function MyApp({ Component, pageProps }) {
   const usuario = useAutenticacion();
-
+  const Auth = Component.Auth || Noop;
   return (
     <>
       <FirebaseContext.Provider value={{ firebase, usuario }}>
+        <Auth>
           <Component {...pageProps} />
+        </Auth>
       </FirebaseContext.Provider>
     </>
   );

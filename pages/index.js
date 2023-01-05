@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Layout from "../components/layout/Layout";
-import DetallesNoticia from "../components/layout/DetallesNoticia";
 import UseNoticias from "../hooks/useNoticias";
 import TopNoticia from "../components/layout/TopNoticia";
 import { GridLoader } from "react-spinners"
@@ -15,9 +14,7 @@ export default function Home() {
     <>
       <Layout title="Listado de noticias">
         <TopNoticia />
-        {noticias.map((noticia) => (
-          <DetallesNoticia key={noticia.id} noticia={noticia} />
-        ))}
+       
       </Layout>
     </>
   );

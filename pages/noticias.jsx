@@ -1,24 +1,17 @@
-import React, { useState, useEffect, Suspense, lazy } from "react";
+import React, { useState } from "react";
 import Layout from "../components/layout/Layout";
 import Populares from "../components/tabs/Populares";
 import Recientes from "../components/tabs/Recientes";
 import Todas from "../components/tabs/Todas";
-import { Spiner } from "../components/ui/spiner";
-import { GridLoader } from "react-spinners"
 export default function Pospulare() {
 
-    const [loanding, setLoanding] = useState(true)
 
 
     const [todos, setTodos] = useState(true)
     const [recientes, setRecientes] = useState(false)
     const [populares, setPopulares] = useState(false)
 
-    useEffect(() => {
-        setTimeout(() => {
-            setLoanding(false);
-        })
-    }, [3000]);
+
 
     function clickTodas() {
         setTodos(true);
@@ -63,18 +56,13 @@ export default function Pospulare() {
                                 onClick={clickPopulares}
                             >Populares</button>
                         </li>
-                        <li className="nav-item">
-                            {/* <button class={`nav-link ${todos ? 'active' : ''}`}>Estrenos 2023</button> */}
-                        </li>
                     </ul>
-                    <Suspense fallback={<Spiner><GridLoader color="#FF6347" /></Spiner> }>
                         {todos ? <Todas /> : null}
 
 
                         {populares ? <Populares /> : null}
 
                         {recientes ? <Recientes /> : null}
-                    </Suspense>
                 </div>
             </Layout>
         </div>

@@ -1,18 +1,17 @@
 import React, { useContext, useState, useEffect } from 'react';
 import toast from 'react-hot-toast'
-import Layout from '../../../components/layout/Layout';
-import { FirebaseContext } from '../../../firebase';
+import { FirebaseContext } from '../../firebase';
 import { useRouter } from 'next/router';
-import useValidacion from '../../../hooks/useValidacion';
-import validarCrearCategoria from '../../../validacion/validarCrearCategoria';
-import UseCategoria from '../../../hooks/useCategoria';
+import useValidacion from '../../hooks/useValidacion';
+import validarCrearCategoria from '../../validacion/validarCrearCategoria';
 import Link from 'next/link';
+import AuthenticatedRoute from '../../components/AuthenticatedRoute';
 
 const STATE_INICIAL = {
     nombre: ''
 }
 
-const Index = () => {
+const Categoria = () => {
     const router = useRouter();
     const { usuario, firebase } = useContext(FirebaseContext)
 
@@ -34,10 +33,6 @@ const Index = () => {
 
 
     async function crearCategoria() {
-        if (!usuario) {
-            return router.push('/login')
-        }
-
         // crear el objeto de registrar la categoria
         const categoria = {
             nombre,
@@ -46,26 +41,32 @@ const Index = () => {
         //  insertarla en la vase de datos
         firebase.db.collection('categoria').add(categoria);
         notify()
+        router.push('/admin')
     }
 
     // const { listaCategorias } = UseCategoria()
 
     const [listaCategorias, setListaCategorias] = useState([])
+    
+
+    const getLista = async () => {
+        try {
+            const obtenerCategoria = () => {
+                firebase.db
+                    .collection("categoria")
+                    .orderBy('creado', "desc")
+                    .onSnapshot(manejarSnapshot);
+            };
+          
+            obtenerCategoria();
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
 
     useEffect(() => {
-        const getLista = async () => {
-            try {
-                const obtenerCategoria = () => {
-                    firebase.db
-                        .collection("categoria")
-                        .orderBy('creado', "desc")
-                        .onSnapshot(manejarSnapshot);
-                };
-                obtenerCategoria();
-            } catch (error) {
-                console.log(error);
-            }
-        }
         getLista()
     }, [nombre]);
     function manejarSnapshot(snapshot) {
@@ -79,13 +80,13 @@ const Index = () => {
     }
 
     return (
-        <Layout>
 
-            <div className='col blog-box p-3 h-25'>
+        <div className='row px-5 pt-5'>
+            <div className='col-md-7 blog-box px-5 pt-5'>
                 <h2>Nueva Categoria</h2>
                 {error && <p className="text-danger">{error}</p>}
-                <form onSubmit={handleSubmit} noValidate>
-                    <div className='mb-3 col-md-5 '>
+                <form onSubmit={handleSubmit} noValidate className='text-center'>
+                    <div className='mb-3 col-md-5 text-center'>
                         <label htmlFor="form3Example1cg" className='form-label'>Nombre de la categoria</label>
                         <input
                             className='form-control'
@@ -100,11 +101,12 @@ const Index = () => {
                         {errores.nombre && <p>{errores.nombre}</p>}
 
                     </div>
-                    <button type="submit"
-                        className="btn btn-primary">Crear Noticia</button>
+                    <div className="text-center pt-4 pb-5">
+                        <button type="submit" className="text btn btn-sucess">Crear Categoria</button>
+                    </div>
                 </form>
             </div>
-            <div className="blog-box p-3 col-lg-3 col-md-12 col-sm-12 col-xs-12">
+            <div className="blog-box pt-5 col-md-4 m-4">
                 <div className="widget">
                     <h2 className="widget-title">Lista de Categorias</h2>
                     <div className="link-widget">
@@ -121,8 +123,8 @@ const Index = () => {
                 </div>
             </div>
 
-        </Layout>
+        </div>
     );
 }
-
-export default Index;
+Categoria.Auth = AuthenticatedRoute
+export default Categoria;

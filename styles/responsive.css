@@ -198,17 +198,12 @@
         left: auto;
     }
     .post-media img {
-        padding-top: 30px;
+       
         height: 250px;
     }
    .menu{
     margin-left: -100px;
 
    }
-   .username{
-    font-size: 20px;
-    font-weight: 300;
-    padding: 10px;
-    text-align: center;
-   }
+ 
 }

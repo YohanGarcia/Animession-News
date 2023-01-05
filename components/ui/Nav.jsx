@@ -44,6 +44,7 @@ export const Nav = styled.nav`
    
   }
 
+
   .nav__links.active{
    opacity: 1;
    pointer-events: unset;
@@ -82,10 +83,10 @@ export const Nav = styled.nav`
 
 /* User STAR */
 .contenedor__logo {
-  width: 200px;
+  width: 170px;
   height: 80px;
   display: flex;
-  align-items: center;
+  margin-top: 10px;
 }
 .nav__logo {
   width: 100%;
@@ -97,54 +98,20 @@ export const Nav = styled.nav`
   width: 50px;
   height: 50px;
   border-radius: 50%;
-
+  margin-right: -1rem;
+  margin-top: -5px;
   cursor: pointer;
   filter: drop-shadow(0 0 5px blue);
-}
-
-.user {
-
+  
 }
 .admin{
   display: flex;
   align-items: block;
- 
+  
   @media(min-width: 768px)  {
     justify-content: flex-end;
   }
 
 }
 /* User end */
-`
-
-export const Logout = styled.button`
-  color: rgb(104, 85, 224);
-  background-color: #cfcccc57;
-  border-radius: 10%;
-  padding: 1px;
-  box-shadow: 10px 10px 10px rgba(35, 35, 36, 0.781);
-
-  &:hover{
-    box-shadow: 0 0 20px rgba(56, 56, 61, 0.226);
-  }
-
-`
-export const Botton = styled.button`
-  cursor: pointer;
-  border: 0;
-  border-radius: 40%;
-  margin: 0 6px;
-  width: 50px;
-  height: 50px;
-  box-shadow: 5px 5px 8px rgba(35, 35, 36, 0.781);
-
-  transition: 0.4s;
-  &:hover {
-    color: white;
-  
-    box-shadow: 0 0 20px rgba(104, 85, 224, 0.6);
-    background-color: var(--soft-red);
-  }
-
-
 `

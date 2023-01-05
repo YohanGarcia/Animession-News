@@ -5,14 +5,15 @@ const UseCategoria = orden => {
     // const [listaCategorias, setListaCategorias] = useState([])
     const { firebase } = useContext(FirebaseContext);
 
-    const [listaCategorias, setListaCategorias] = useState([])
+    const [noticias, setListaCategorias] = useState([])
 
     useEffect(() => {
         const getLista = async () => {
             try {
                 const obtenerCategoria = () => {
                     firebase.db
-                        .collection("categoria")
+                        .collection("noticias")
+                        .where('categoria', '==', 'nombre/Estrene 2023')
                         .orderBy('creado', "desc")
                         .onSnapshot(manejarSnapshot);
                 };
@@ -22,19 +23,20 @@ const UseCategoria = orden => {
             }
         }
         getLista()
-    }, [nombre]);
+    }, []);
     function manejarSnapshot(snapshot) {
-        const categorias = snapshot.docs.map((doc) => {
+        const noticias = snapshot.docs.map((doc) => {
             return {
                 id: doc.id,
                 ...doc.data(),
             };
         });
-        setListaCategorias(categorias)
+        console.log(noticias);
+        setListaCategorias(noticias)
     }
 
     return (
-        listaCategorias
+        noticias
     )
 }
 
