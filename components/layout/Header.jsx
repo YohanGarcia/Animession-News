@@ -101,19 +101,19 @@ const Header = () => {
                                 </Link>
                             </>
                         ) : (
-                            <div className='admin '>
-                                <Link href='#' className='ms-5 p-2 ' onClick={handleShow}>
-                                    <FontAwesomeIcon
-                                        icon={faRightToBracket}
-                                        style={{
-                                            color: "#FF6347",
-                                            fontSize: 25,
 
-                                        }}
+                            <Link href='#' className='pb-2 ' onClick={handleShow}>
+                                <FontAwesomeIcon
+                                    icon={faRightToBracket}
+                                    style={{
+                                        color: "#FF6347",
+                                        fontSize: 25,
 
-                                    />
-                                </Link>
-                            </div>
+                                    }}
+
+                                />
+                            </Link>
+
                         )}
 
                     </div>
