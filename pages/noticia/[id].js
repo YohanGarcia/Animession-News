@@ -35,6 +35,9 @@ const Noticia = () => {
     posts1,
     posts2,
     posts3,
+    posts4,
+    posts5,
+    posts6,
     titulo,
     urlimagen,
     trailers,
@@ -183,6 +186,27 @@ const Noticia = () => {
                     <>
                       <div className="pp ">
                         <p>{posts3} </p>
+                      </div>
+                    </>
+                  }
+                  {posts4 &&
+                    <>
+                      <div className="pp ">
+                        <p>{posts4} </p>
+                      </div>
+                    </>
+                  }
+                  {posts5 &&
+                    <>
+                      <div className="pp ">
+                        <p>{posts5} </p>
+                      </div>
+                    </>
+                  }
+                  {posts6 &&
+                    <>
+                      <div className="pp ">
+                        <p>{posts6} </p>
                       </div>
                     </>
                   }

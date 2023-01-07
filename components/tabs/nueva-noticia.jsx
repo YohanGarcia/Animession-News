@@ -30,7 +30,7 @@ const NuevaNoticia = () => {
     const [error, guardarErrore] = useState('');
 
     const { valores, errores, handleSubmit, handleChange, handleBlur } = useValidacion(STATE_INICIAL, validarCrearNoticia, crearNoticia);
-    const { titulo, posts1, posts2 = '', posts3 = '', trailers, sinopsis } = valores;
+    const { titulo, posts1, posts2 = '', posts3 = '', posts4 = '', posts5 = '', posts6 = '', trailers, sinopsis } = valores;
 
     // context con las operaciones crud de firebase
     const { usuario, firebase, myFirebase } = useContext(FirebaseContext);
@@ -53,6 +53,9 @@ const NuevaNoticia = () => {
             posts1,
             posts2,
             posts3,
+            posts4,
+            posts5,
+            posts6,
             urlimagen,
             trailers,
             sinopsis,
@@ -70,7 +73,7 @@ const NuevaNoticia = () => {
             subcategoria: {
                 id: subCategoriaSelect.value,
                 nombre: subCategoriaSelect.label
-                
+
             }
         }
 
@@ -147,14 +150,15 @@ const NuevaNoticia = () => {
 
     return (
         <>
-            <div className='user'>
-                <img
-                    src={urlimagen}
-                    alt=""
-                    className='user__avatar img-thumbnail'
-                />
 
-            </div>
+            <nav className="navbar navbar-light bg-light">
+                <div className="container-fluid">
+                    <a className="navbar-brand" href="#">
+                        <img src={urlimagen} alt="" style={{ width: "30px", height: "24px" }} />
+                    </a>
+                </div>
+            </nav>
+
             <h2 className="">Nueva Noticia</h2>
             {error && <p className="">{error}</p>}
             <form onSubmit={handleSubmit} noValidate className="blog-box px-5">
@@ -233,17 +237,62 @@ const NuevaNoticia = () => {
                         />
                     </div>
                     <div className="col-6 pt-2">
-
-                        <label htmlFor="formFileSm" className="f">Imagen</label>
-                        <input
+                        <label className="" htmlFor="exampleFormControlTextarea1">contenido 4</label>
+                        <textarea
+                            type="text"
+                            name="posts4"
+                            id="fexampleFormControlTextarea1"
                             className="form-control"
-                            type="file"
-                            id="formFileSm"
-                            name="imagen1"
-                            aria-describedby="inputGroupFileAddon04"
-                            aria-label="Upload"
-                            onChange={e => uploadFile(e.target.files[0])}
+                            aria-label="With textarea"
+                            value={posts4}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
                         />
+                    </div>
+                    <div className="col-6 pt-2">
+                        <label className="" htmlFor="exampleFormControlTextarea1">contenido 5</label>
+                        <textarea
+                            type="text"
+                            name="posts5"
+                            id="fexampleFormControlTextarea1"
+                            className="form-control"
+                            aria-label="With textarea"
+                            value={posts5}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                        />
+                    </div>
+                    <div className="col-6 pt-2">
+                        <label className="" htmlFor="exampleFormControlTextarea1">contenido 6</label>
+                        <textarea
+                            type="text"
+                            name="posts6"
+                            id="fexampleFormControlTextarea1"
+                            className="form-control"
+                            aria-label="With textarea"
+                            value={posts6}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                        />
+                    </div>
+                    <div className="col-6 pt-2">
+
+                        <label htmlFor="formFileSm" className="f">Imagen </label>
+                        {urlimagen ?
+                        <div className="">
+                            <img src={urlimagen} alt="" style={{ width: "130px", height: "124px", borderRadius: '5%' }} />
+                        </div>
+                            :
+                            <input
+                                className="form-control"
+                                type="file"
+                                id="formFileSm"
+                                name="imagen1"
+                                aria-describedby="inputGroupFileAddon04"
+                                aria-label="Upload"
+                                onChange={e => uploadFile(e.target.files[0])}
+                            />
+                        }
 
                         {errores.imagen1 && <p className="r">{errores.imagen1}</p>}
                     </div>
